@@ -17,13 +17,16 @@ return new class extends Migration
             $table->unsignedBigInteger('class_id');
             $table->unsignedBigInteger('subject_id');
             $table->unsignedBigInteger('grades_id');
+            $table->unsignedBigInteger('attendance_id');
+            $table->unsignedBigInteger('user_id');
             
             $table->timestamps();
 
             $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade')->onUpdate('restrict');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade')->onUpdate('restrict');
             $table->foreign('grades_id')->references('id')->on('grades')->onDelete('cascade')->onUpdate('restrict');
-            
+            $table->foreign('attendance_id')->references('id')->on('attendances')->onDelete('cascade')->onUpdate('restrict');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete()->onDelete('cascade')->onUpdate('restrict');
         });
     }
 

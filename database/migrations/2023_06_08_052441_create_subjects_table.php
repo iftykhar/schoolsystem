@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->timestamps();
+            $table->integer('order_id')->default('0')->index();
+            $table->tinyInteger('status')->default('1')->comment("1=active, 2=inactive, -1=deleted")->index();
+            $table->integer('created_by');
+            $table->timestamp('created_at')->nullable();
+            $table->integer('updated_by')->nullable();
+            $table->timestamp('updated_at')->nullable();
 
-            
+
         });
     }
 
